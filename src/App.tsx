@@ -37,7 +37,7 @@ import './network-orbit.css'
 import './topbar-popovers.css'
 
 const navItems = [
-  { path: '/app/caspian', label: 'Сеть Каспия', icon: Globe2, badge: 'НОВОЕ' },
+  { path: '/app/caspian', label: 'Сеть Каспия', icon: Globe2 },
   { path: '/app/map', label: 'Карта', icon: Map },
   { path: '/app/vessels', label: 'Суда', icon: Ship },
   { path: '/app/voyages', label: 'Рейсы', icon: Route },
