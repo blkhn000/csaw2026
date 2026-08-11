@@ -1,0 +1,156 @@
+/* Shared legibility layer. Loaded last so dense analytical modules keep a
+   consistent readable baseline without changing their visual hierarchy. */
+.app-shell {
+  font-size: 14px;
+}
+
+.app-shell button,
+.app-shell input,
+.app-shell select,
+.app-shell textarea {
+  font-size: 12px !important;
+}
+
+.app-shell p,
+.app-shell li,
+.app-shell dd,
+.app-shell dt {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.app-shell small,
+.app-shell time,
+.app-shell em,
+.app-shell .cell-sub {
+  font-size: 11px !important;
+  line-height: 1.4;
+}
+
+.app-shell table th {
+  font-size: 11px !important;
+  line-height: 1.3;
+}
+
+.app-shell table td {
+  font-size: 12px !important;
+  line-height: 1.4;
+}
+
+.app-shell .page-eyebrow,
+.app-shell .eyebrow,
+.app-shell .nav-section,
+.app-shell .statusbar,
+.app-shell .results-count,
+.app-shell .map-coordinates,
+.app-shell .coordinates {
+  font-size: 11px !important;
+  line-height: 1.35;
+}
+
+.app-shell .nav-item,
+.app-shell .collapse-button,
+.app-shell .global-search,
+.app-shell .profile-button {
+  font-size: 13px !important;
+}
+
+.app-shell .status-pill,
+.app-shell .severity,
+.app-shell .risk-level-badge,
+.app-shell .data-status,
+.app-shell .confidence-label,
+.app-shell .filter-chip,
+.app-shell .port-badge,
+.app-shell [class*="badge"] {
+  font-size: 11px !important;
+  line-height: 1.25;
+}
+
+.app-shell .vessel-cell strong,
+.app-shell .search-result strong,
+.app-shell .event-row strong {
+  font-size: 12px !important;
+}
+
+.app-shell .vessel-cell small,
+.app-shell .search-result small,
+.app-shell .event-row small {
+  font-size: 11px !important;
+}
+
+.app-shell .layer-toggle,
+.app-shell .map-legend,
+.app-shell .map-toolbar button,
+.app-shell .map-control-button,
+.app-shell .cn-module-nav button,
+.app-shell .assistant-suggestion,
+.app-shell .assistant-tool-chip {
+  font-size: 11px !important;
+}
+
+.real-caspian-map .maplibregl-ctrl-attrib,
+.real-caspian-map .maplibregl-ctrl-scale {
+  font-size: 10px !important;
+  line-height: 1.3;
+}
+
+/* The specialised modules previously used 6–9 px metadata. */
+.risk-center-page small,
+.advanced-page small,
+.port-page small,
+.environmental-center-page small,
+.environmental-event-page small,
+.assistant-page small,
+.investigation-page small,
+.cn-page small {
+  font-size: 11px !important;
+}
+
+.cn-page .cn-watch-list i,
+.cn-page .cn-port-pulse footer,
+.cn-page .cn-metric-card > span,
+.cn-page .cn-map-toolbar span,
+.risk-center-page .risk-factor-copy > span,
+.assistant-page .assistant-message-meta,
+.environmental-center-page .env-event-meta {
+  font-size: 11px !important;
+  line-height: 1.35;
+}
+
+.risk-center-page button,
+.advanced-page button,
+.port-page button,
+.environmental-center-page button,
+.environmental-event-page button,
+.assistant-page button,
+.investigation-page button,
+.cn-page button {
+  min-height: 30px;
+  font-size: 11px !important;
+}
+
+@media (max-width: 760px) {
+  .app-shell {
+    font-size: 14px;
+  }
+
+  .app-shell button,
+  .app-shell input,
+  .app-shell select,
+  .app-shell textarea,
+  .app-shell table td {
+    font-size: 12px !important;
+  }
+
+  .app-shell small,
+  .app-shell time,
+  .app-shell em,
+  .app-shell table th,
+  .app-shell .page-eyebrow,
+  .app-shell .eyebrow,
+  .app-shell .status-pill,
+  .app-shell [class*="badge"] {
+    font-size: 11px !important;
+  }
+}

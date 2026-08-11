@@ -1,0 +1,304 @@
+/* UX refinement layer: progressive disclosure, readable density and mobile records. */
+.content-page,
+.cn-page {
+  --ux-space-1: 6px;
+  --ux-space-2: 10px;
+  --ux-space-3: 16px;
+  --ux-space-4: 24px;
+}
+
+.content-page > .page-header,
+.cn-page > .cn-page-header {
+  margin-bottom: var(--ux-space-4);
+}
+
+.page-header > div:first-child,
+.cn-page-header > div:first-child {
+  max-width: 760px;
+}
+
+.page-header p,
+.cn-page-header p {
+  max-width: 720px;
+  font-size: 13px !important;
+  line-height: 1.55;
+}
+
+.card p,
+.cn-panel p {
+  line-height: 1.55;
+}
+
+/* В демонстрационном режиме используется одна учётная запись без выбора ролей. */
+.settings-nav button:nth-child(4),
+.settings-form .form-grid label:nth-child(4),
+.settings-form .profile-edit > div:nth-child(2) span {
+  display: none;
+}
+
+.cn-metrics-grid.cn-primary-metrics {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.cn-primary-metrics .cn-metric-card {
+  min-height: 100px;
+  padding: 16px;
+}
+
+.cn-secondary-metrics {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  min-height: 40px;
+  padding: 8px 12px;
+  margin: 10px 0 14px;
+  border: 1px solid #dfe8e5;
+  border-radius: 8px;
+  background: #f8faf9;
+  color: #60716b;
+  font-size: 12px;
+}
+
+.cn-secondary-metrics span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cn-secondary-metrics svg { color: #287e73; }
+.cn-secondary-metrics b { color: #243f39; font: 600 13px 'DM Mono', monospace; }
+
+.cn-dashboard-disclosure {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 16px 0;
+  padding: 13px 15px;
+  border: 1px solid #dce6e3;
+  border-radius: 9px;
+  background: #fff;
+}
+
+.cn-dashboard-disclosure > span {
+  color: #72817c;
+  font-size: 12px;
+}
+
+.cn-dashboard-disclosure button[aria-expanded="true"] svg:last-child { transform: rotate(180deg); }
+.cn-dashboard-disclosure button svg:last-child { transition: transform .18s ease; }
+.cn-dashboard-details { animation: ux-reveal .2s ease; }
+
+@keyframes ux-reveal {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mobile-record-list { display: none; }
+
+.map-canvas > .vessel-drawer,
+.map-canvas > .event-drawer {
+  width: min(390px, calc(100% - 28px));
+  border-radius: 12px 0 0 12px;
+  box-shadow: -12px 0 40px rgba(18, 54, 47, .16);
+}
+
+.map-inspector-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  padding: 5px;
+  margin: 12px 0;
+  border-radius: 8px;
+  background: #edf3f1;
+}
+
+.map-inspector-tabs button {
+  min-height: 34px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #63746e;
+  font-weight: 650;
+}
+
+.map-inspector-tabs button.active {
+  color: #126f65;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(28, 62, 54, .09);
+}
+
+.map-inspector-panel { animation: ux-reveal .16s ease; }
+.map-inspector-event {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 4px;
+  border: 0;
+  border-bottom: 1px solid #e7ecea;
+  background: transparent;
+  color: #334941;
+  text-align: left;
+}
+
+.map-inspector-event:hover { background: #f6f9f8; }
+.map-inspector-event > span:nth-child(2) { display: flex; min-width: 0; flex-direction: column; gap: 3px; }
+.map-inspector-event strong { overflow: hidden; font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }
+.map-inspector-event small { color: #7b8984; font-size: 11px !important; }
+
+.map-inspector-quick-risk {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 9px;
+  background: #fbf3ee;
+}
+
+.map-inspector-quick-risk > strong {
+  font: 600 28px 'DM Mono', monospace;
+  color: #a84d3c;
+}
+
+.map-inspector-quick-risk span { display: flex; flex-direction: column; gap: 3px; }
+.map-inspector-quick-risk small { color: #7a6c67; }
+
+.risk-explanation-digest {
+  display: grid;
+  grid-template-columns: minmax(190px, .8fr) 1.4fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 1px solid #dfe7e4;
+  border-left: 3px solid #bd702d;
+  border-radius: 9px;
+  background: #fff;
+}
+
+.risk-explanation-digest h3 { margin: 3px 0; font-size: 16px; }
+.risk-explanation-digest p { margin: 0; color: #6e7d78; font-size: 12px; }
+.risk-digest-factors { display: flex; flex-wrap: wrap; gap: 6px; }
+.risk-digest-factors span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: #f2f6f4;
+  color: #41554e;
+  font-size: 11px;
+}
+.risk-digest-factors b { color: #a74e3c; }
+.risk-details-toggle { white-space: nowrap; }
+.risk-details-toggle svg { transition: transform .18s ease; }
+.risk-details-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+.risk-why-card.ux-collapsed { display: none; }
+
+@media (max-width: 1050px) {
+  .cn-metrics-grid.cn-primary-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .risk-explanation-digest { grid-template-columns: 1fr auto; }
+  .risk-digest-factors { grid-column: 1 / -1; grid-row: 2; }
+}
+
+@media (max-width: 760px) {
+  .content-page > .page-header,
+  .cn-page > .cn-page-header { margin-bottom: 18px; }
+
+  .content-page > .page-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .content-page > .page-header .header-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .content-page > .page-header .header-actions > button {
+    max-width: 100%;
+  }
+
+  .cn-metrics-grid.cn-primary-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cn-primary-metrics .cn-metric-card { min-height: 94px; padding: 13px; }
+  .cn-secondary-metrics { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .cn-secondary-metrics span { flex: 0 0 auto; }
+  .cn-dashboard-disclosure { align-items: flex-start; flex-direction: column; }
+
+  .desktop-data-table { display: none !important; }
+  .mobile-record-list {
+    display: grid;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .mobile-record-card {
+    width: 100%;
+    min-height: 118px;
+    padding: 13px;
+    border: 1px solid #dfe6e3;
+    border-radius: 10px;
+    background: #fff;
+    color: #33463f;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 38px 1fr auto;
+    gap: 10px;
+    align-items: start;
+  }
+
+  .mobile-record-icon {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    color: #14776c;
+    background: #e7f2ef;
+  }
+
+  .mobile-record-main { display: flex; flex-direction: column; min-width: 0; gap: 4px; }
+  .mobile-record-main strong { font-size: 14px; }
+  .mobile-record-main > span { color: #6f7e79; font-size: 12px; }
+  .mobile-record-main > small { font-size: 11px !important; color: #87938e; }
+  .mobile-record-meta {
+    grid-column: 2 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    padding-top: 9px;
+    border-top: 1px solid #edf0ef;
+  }
+  .mobile-record-meta span { display: flex; flex-direction: column; gap: 2px; font-size: 11px; color: #7c8984; }
+  .mobile-record-meta b { color: #34473f; font-size: 12px; }
+
+  .map-canvas > .vessel-drawer,
+  .map-canvas > .event-drawer {
+    position: absolute;
+    top: auto;
+    right: 8px;
+    bottom: 8px;
+    left: 8px;
+    width: auto;
+    max-height: min(72vh, 620px);
+    border-radius: 14px;
+    overflow-y: auto;
+    box-shadow: 0 -10px 38px rgba(18, 54, 47, .2);
+  }
+
+  .map-inspector-tabs { position: sticky; top: 0; z-index: 2; }
+  .risk-explanation-digest { grid-template-columns: 1fr; }
+  .risk-digest-factors { grid-column: auto; grid-row: auto; }
+  .risk-details-toggle { width: 100%; }
+}
+
+@media (max-width: 430px) {
+  .cn-metrics-grid.cn-primary-metrics { grid-template-columns: 1fr 1fr; }
+  .mobile-record-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .map-inspector-tabs button { font-size: 11px !important; }
+}

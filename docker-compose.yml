@@ -1,0 +1,29 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+  api:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql://caspian:caspian@db:5432/caspian
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      - db
+      - redis
+  db:
+    image: postgis/postgis:17-3.5
+    environment:
+      POSTGRES_DB: caspian
+      POSTGRES_USER: caspian
+      POSTGRES_PASSWORD: caspian
+    volumes:
+      - caspian_db:/var/lib/postgresql/data
+      - ./backend/schema.sql:/docker-entrypoint-initdb.d/01-tracking-schema.sql:ro
+  redis:
+    image: redis:8-alpine
+
+volumes:
+  caspian_db:

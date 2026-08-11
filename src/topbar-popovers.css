@@ -1,0 +1,199 @@
+.top-actions { position: relative; }
+.topbar { overflow: visible; }
+
+.notification.active,
+.profile-button.active {
+  color: #0c7167;
+  background: #edf6f3;
+}
+
+.profile-button.active > svg { transform: rotate(180deg); }
+.profile-button > svg { transition: transform .18s ease; }
+
+.topbar-popover-backdrop {
+  position: fixed;
+  inset: 64px 0 28px;
+  z-index: 59;
+  border: 0;
+  background: rgba(26, 49, 43, .08);
+}
+
+.topbar-popover {
+  position: absolute;
+  top: 57px;
+  right: 0;
+  z-index: 85;
+  overflow: hidden;
+  border: 1px solid #dce5e2;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 18px 48px rgba(21, 53, 46, .18);
+  animation: topbar-popover-in .16s ease;
+}
+
+@keyframes topbar-popover-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.notifications-popover { width: 390px; }
+.notifications-popover > header {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 15px;
+  border-bottom: 1px solid #e5ebe9;
+}
+
+.notifications-popover h2 { margin: 3px 0 0; font-size: 16px; }
+.notification-count {
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: #f7e7dc;
+  color: #9d4f2f;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.notification-popover-actions {
+  display: flex;
+  justify-content: flex-end;
+  min-height: 39px;
+  padding: 5px 12px;
+  background: #f7f9f8;
+}
+
+.notification-popover-actions button,
+.notifications-popover > footer button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 0;
+  background: transparent;
+  color: #477068;
+  font-size: 10px;
+  font-weight: 650;
+}
+.notification-popover-actions button:disabled { color: #a0aaa6; }
+
+.notification-popover-list {
+  max-height: min(480px, calc(100vh - 220px));
+  overflow-y: auto;
+}
+
+.notification-popover-list > button {
+  position: relative;
+  width: 100%;
+  min-height: 78px;
+  display: grid;
+  grid-template-columns: 35px minmax(0, 1fr) 7px 16px;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 13px;
+  border: 0;
+  border-bottom: 1px solid #e9eeec;
+  background: #fff;
+  color: #3a4e47;
+  text-align: left;
+}
+
+.notification-popover-list > button:hover { background: #f7faf9; }
+.notification-popover-list > button.unread { background: #fbfdfc; }
+.notification-popover-list > button > span:nth-child(2) { display: flex; min-width: 0; flex-direction: column; gap: 3px; }
+.notification-popover-list strong { font-size: 11px; }
+.notification-popover-list small { overflow: hidden; color: #71817c; font-size: 10px !important; line-height: 1.35; text-overflow: ellipsis; white-space: nowrap; }
+.notification-popover-list time { color: #99a39f; font-size: 9px; }
+.notification-popover-list > button > i { width: 6px; height: 6px; border-radius: 50%; background: #d36f38; }
+.notification-popover-list > button:not(.unread) > i { visibility: hidden; }
+.notification-popover-list > button > svg { color: #9aa5a1; }
+
+.notification-type-icon {
+  width: 34px;
+  height: 34px;
+  display: grid !important;
+  place-items: center;
+  border-radius: 8px;
+  background: #edf3f1;
+  color: #32776d;
+}
+.notification-popover-list .critical .notification-type-icon { color: #a54539; background: #f8e7e3; }
+.notification-popover-list .warning .notification-type-icon { color: #a76426; background: #faeedf; }
+.notification-popover-list .success .notification-type-icon { color: #277b68; background: #e5f3ee; }
+
+.notifications-popover > footer {
+  min-height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #e3e9e7;
+  background: #f8faf9;
+}
+
+.profile-popover { width: 310px; }
+.profile-popover-account {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 15px;
+  border-bottom: 1px solid #e5ebe9;
+}
+.profile-popover-account .avatar.large { width: 43px; height: 43px; flex: none; }
+.profile-popover-account > span { display: flex; min-width: 0; flex-direction: column; gap: 3px; }
+.profile-popover-account strong { font-size: 12px; }
+.profile-popover-account small { color: #74827e; font-size: 10px !important; }
+.profile-popover-account em { width: fit-content; padding: 3px 6px; border-radius: 4px; background: #edf5f2; color: #347168; font-size: 8px; font-style: normal; }
+
+.profile-popover-menu { padding: 6px; }
+.profile-popover-menu > button {
+  width: 100%;
+  min-height: 54px;
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 9px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #40534c;
+  text-align: left;
+}
+.profile-popover-menu > button:hover { background: #f3f7f5; color: #0d7167; }
+.profile-popover-menu > button > span { display: flex; flex-direction: column; gap: 3px; }
+.profile-popover-menu strong { font-size: 11px; }
+.profile-popover-menu small { color: #83908c; font-size: 9px !important; }
+.profile-popover-menu > button > svg:last-child { color: #9da7a3; }
+
+.profile-popover-session {
+  padding: 10px 12px;
+  border-top: 1px solid #e5ebe9;
+  background: #f8faf9;
+}
+.profile-popover-session > span { display: flex; align-items: center; gap: 6px; margin-bottom: 9px; color: #73817d; font-size: 9px; }
+.profile-popover-session > span i { width: 6px; height: 6px; border-radius: 50%; background: #25a777; }
+.profile-popover-session > button {
+  width: 100%;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid #e2d9d6;
+  border-radius: 7px;
+  background: #fff;
+  color: #9a4a3e;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .topbar-popover-backdrop { inset: 58px 0 26px; }
+  .notification { display: grid; }
+  .top-actions { gap: 5px; }
+  .topbar-popover { top: 52px; right: 0; max-height: calc(100vh - 76px); }
+  .notifications-popover,
+  .profile-popover { width: min(390px, calc(100vw - 16px)); }
+  .notification-popover-list { max-height: calc(100vh - 250px); }
+}
