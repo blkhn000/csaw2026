@@ -228,6 +228,12 @@ const API_BASE = import.meta.env.VITE_API_BASE || (
     : '/api/v1'
 )
 
+const WS_BASE = import.meta.env.VITE_WS_BASE || (
+  ['4173', '5173'].includes(window.location.port)
+    ? `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.hostname}:8000`
+    : `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}`
+)
+
 const DEFAULT_EVENT_ID = 'ENV-2026-00142'
 
 function apiHeaders() {
@@ -400,9 +406,8 @@ export function EnvironmentalCenterPage({ navigate = defaultNavigate }: { naviga
 
   useEffect(() => {
     void load()
-    const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws'
     const token = localStorage.getItem('ci-access-token') || 'ci-demo-analyst'
-    const socket = new WebSocket(`${protocol}://${window.location.hostname}:8000/ws/environment?token=${encodeURIComponent(token)}`)
+    const socket = new WebSocket(`${WS_BASE}/ws/environment?token=${encodeURIComponent(token)}`)
     socket.onmessage = message => {
       try {
         const payload = JSON.parse(message.data) as { type?: string }
@@ -771,9 +776,8 @@ export function EnvironmentalEventPage({ eventId = DEFAULT_EVENT_ID, navigate = 
 
   useEffect(() => {
     void load()
-    const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws'
     const token = localStorage.getItem('ci-access-token') || 'ci-demo-analyst'
-    const socket = new WebSocket(`${protocol}://${window.location.hostname}:8000/ws/environment?token=${encodeURIComponent(token)}`)
+    const socket = new WebSocket(`${WS_BASE}/ws/environment?token=${encodeURIComponent(token)}`)
     socket.onmessage = message => {
       try {
         const payload = JSON.parse(message.data) as { type?: string; event?: { id?: string }; event_id?: string }

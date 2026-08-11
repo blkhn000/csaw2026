@@ -75,6 +75,12 @@ const API_BASE = import.meta.env.VITE_API_BASE || (
     : '/api/v1'
 )
 
+const WS_BASE = import.meta.env.VITE_WS_BASE || (
+  ['4173', '5173'].includes(window.location.port)
+    ? `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.hostname}:8000`
+    : `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}`
+)
+
 function Logo({ compact = false }: { compact?: boolean }) {
   return <div className={`logo ${compact ? 'logo-compact' : ''}`}>
     <div className="logo-mark"><Mountain size={21} strokeWidth={2.1} /></div>
@@ -241,8 +247,7 @@ function MapPage() {
         })
         .catch(()=>{if(active)setEnvironmentalEvents([])})
     void loadEnvironmental()
-    const protocol=location.protocol==='https:'?'wss':'ws'
-    const socket=new WebSocket(`${protocol}://${location.hostname}:8000/ws/environment?token=${encodeURIComponent(token)}`)
+    const socket=new WebSocket(`${WS_BASE}/ws/environment?token=${encodeURIComponent(token)}`)
     socket.onmessage=message=>{try{const payload=JSON.parse(message.data) as {type?:string};if(payload.type?.startsWith('environmental_'))void loadEnvironmental()}catch{/* REST snapshot remains authoritative. */}}
     return()=>{active=false;socket.close()}
   },[])
@@ -269,7 +274,7 @@ function MapPage() {
   },[mode,streamConnected])
   useEffect(()=>{
     if(mode!=='live') return
-    const protocol=location.protocol==='https:'?'wss':'ws'; const socket=new WebSocket(`${protocol}://${location.hostname}:8000/ws/vessels?token=ci-demo-analyst`)
+    const socket=new WebSocket(`${WS_BASE}/ws/vessels?token=ci-demo-analyst`)
     socket.onopen=()=>setStreamConnected(true)
     socket.onmessage=event=>{const message=JSON.parse(event.data);if(message.type!=='position_update')return;const next=message.vessel;setLiveFleet(current=>current.map(v=>v.id===next.id?{...v,x:Math.max(20,Math.min(78,v.x+(next.lon-v.longitude)*6)),y:Math.max(5,Math.min(96,v.y-(next.lat-v.latitude)*6)),latitude:next.lat,longitude:next.lon,speed:next.speed,course:next.course,heading:next.heading||next.course,lastPositionAt:'just now'}:v))}
     socket.onerror=()=>setStreamConnected(false);socket.onclose=()=>setStreamConnected(false)
